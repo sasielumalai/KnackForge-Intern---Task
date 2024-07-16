@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Occurrences</title>
+</head>
+<body>
+    <h1>Count Occurrences of Elements in Array</h1>
+    <div id="output"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const array = [1, 2, 3, 2, 4, 5, 3, 1, 2];
+
+            // count occurrences
+            function countOccurrences(arr) {
+                const occurrences = {};
+                for (let i = 0; i < arr.length; i++) {
+                    const num = arr[i];
+                    if (occurrences[num]) {
+                        occurrences[num]++;
+                    } else {
+                        occurrences[num] = 1;
+                    }
+                }
+                return occurrences;
+            }
+
+            const result = countOccurrences(array);
+
+            // output
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "<h2>Element Occurrences</h2>";
+
+            for (let num in result) {
+                const count = result[num];
+                outputDiv.innerHTML += `<p>Number ${num} occurs ${count} time${count !== 1 ? 's' : ''}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
